@@ -4,6 +4,8 @@ from selenium.webdriver.chrome.options import Options
 import os
 import moneys
 
+progress = 0
+
 folder = os.path.dirname(__file__)
 
 PROXY = "127.0.0.1:24000"
@@ -34,12 +36,13 @@ def get(country: str):
     return float(targeIinput)
 
 def selAll():
-    for i in moneys.values:
-        print('Stage -', i)
-        if i == 'USD':
-            moneys.values[i] = 1
-            continue
+    global progress
+    progress = 0
+    moneys.values['USD'] = 1
+    for i in list(moneys.values.keys())[1:]:
+        print('Check:', i)
         moneys.values[i] = get(i)
-    print()
-    driver.quit()
+        progress += 1
+    print('Done')
+    #driver.quit()
 

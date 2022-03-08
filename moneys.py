@@ -1,4 +1,4 @@
-types = ['uah', 'eur', 'usd', 'cad', 'rub', 'gel', 'gbp', 'inr', 'amd']
+types = ['usd', 'uah', 'eur', 'cad', 'rub', 'gel', 'gbp', 'inr', 'amd']
 
 values = {}
 

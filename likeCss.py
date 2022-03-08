@@ -1,7 +1,8 @@
 from tkinter import *
+from tkinter import ttk
 
 classLabel = lambda window: Label(window,
-              text='Go ahead, Mr. Jostar',
+              text='Go ahead, Mr. Joestar',
               font=('Arial', 40, 'bold'),
               fg='#EEBC1D',
               bg='black',
@@ -37,9 +38,17 @@ buttonClass = lambda window, func, text: Button(window,
 warningLabel = lambda window: Label(window,
               text='Uncorrect input',
               font=('Arial', 20, 'bold'),
-              fg='#8B0000',
-              bg='#FF7F7F',
+              fg='#404040',
+              bg='#404040',
               relief=FLAT,
               bd=5,
               padx=5,
-              pady=5,)
+              pady=5,
+              disabledforeground='#404040',)
+              
+
+progressbarClass = lambda window: ttk.Progressbar(window, 
+                    orient ="horizontal", 
+                    length = 200,
+                    mode ="determinate",
+                    takefocus=2)
