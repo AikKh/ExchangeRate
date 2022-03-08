@@ -1,8 +1,8 @@
 from tkinter import *
 from tkinter import ttk
 
-classLabel = lambda window: Label(window,
-              text='Go ahead, Mr. Joestar',
+classLabel = lambda window, text: Label(window,
+              text=text,
               font=('Arial', 40, 'bold'),
               fg='#EEBC1D',
               bg='black',
@@ -14,7 +14,9 @@ classLabel = lambda window: Label(window,
 classEntry = lambda window: Entry(window,
               font=('Arial', 30, 'bold'),
               fg='#EEBC1D',
-              bg='black',)
+              bg='black',
+              disabledbackground='#A9A9A9',
+              disabledforeground='#A9A9A9')
 
 menuClass = {'font':('Helvetica', 12), 
              'fg':'#EEBC1D', 

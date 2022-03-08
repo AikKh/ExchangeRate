@@ -6,9 +6,21 @@ import moneys
 from likeCss import *
 from threading import Thread
 
-getValues.selAll()
 VALUES = getValues.moneys.values
 options = [i.upper() for i in moneys.types]
+
+def changeState(state):
+    entry_1.config(state=state)
+    entry_2.config(state=state)
+    menu_1.config(state=state)
+    menu_2.config(state=state)
+    count.config(state=state)
+    updateButton.config(state=state)
+    if state == 'normal':
+        label.config(text='Go ahead, Mr. Joestar')
+    else:
+        label.config(text='Loading...')
+    
 
 def update(*args):
     progressbar = progressbarClass(window)
@@ -18,13 +30,13 @@ def update(*args):
     
     def progressing():
         progress = 0
-        updateButton.config(state='disable')
+        changeState(state='disable')
         while progress < len(getValues.moneys.types) - 1:
             if progress != getValues.progress:
                 progress = getValues.progress
                 progressbar['value'] = progress
                 window.update()
-        updateButton.config(state='normal')
+        changeState(state='normal')
         sleep(0.2)
         progressbar.destroy()
         
@@ -71,7 +83,7 @@ warning.config(state='disabled')
 warning.place(x=20, y=250)
 
 
-label = classLabel(window)
+label = classLabel(window, 'Loading...')
 label.pack()
 
 entry_1 = classEntry(window)
@@ -101,7 +113,8 @@ count = buttonClass(window, countFuction, 'Count')
 count.place(x=0, y=540)
 
 updateButton = buttonClass(window, update, 'Update')
-# updateButton.config(state='disable')
 updateButton.place(x=330, y=540)
 
+
+update()
 window.mainloop()
